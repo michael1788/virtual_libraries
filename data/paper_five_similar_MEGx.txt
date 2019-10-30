@@ -1,0 +1,5 @@
+COc1c(O)cc2oc(-c3ccc(O)c(O)c3)cc(=O)c2c1O
+COc1cc2oc(-c3ccc(O)c(O)c3)cc(=O)c2c(O)c1OC
+COc1ccc(-c2cc(=O)c3c(O)c(OC)c(O)cc3o2)cc1O
+COc1c(O)cc2oc(-c3ccc(O)cc3)cc(=O)c2c1O
+COc1ccc(-c2cc(=O)c3c(O)c(OC)c(O)cc3o2)cc1OC
