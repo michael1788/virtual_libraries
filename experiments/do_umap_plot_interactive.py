@@ -2,6 +2,8 @@ import os, sys
 import argparse
 import configparser
 import ast
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 import time
 import pandas as pd
 from rdkit import Chem

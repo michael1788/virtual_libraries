@@ -1,4 +1,4 @@
-# Generating customized compound libraries for drug discovery with machine intelligence
+# Generative molecular design in low data regimes
 
 
 ## Table of Contents
@@ -18,25 +18,20 @@
 
 ### Description<a name="Description"></a>
 
-This is the supporting code for the paper «Generating customized compound libraries for drug discovery with machine intelligence»
+Supporting code for the paper «Generative molecular design in low data regimes»
 
-**Abstract of the paper**: Generative machine learning models sample drug-like molecules from chemical space without the need for explicit design rules. 
-A deep learning framework for customized compound library generation is presented, aiming to enrich and expand the pharmacologically relevant chemical 
-space with new molecular entities ‘on demand’. This de novo design approach was used to generate molecules that combine features from bioactive synthetic 
-compounds and natural products, which are a primary source of inspiration for drug discovery. The results show that the data-driven machine intelligence 
-acquires implicit chemical knowledge and generates novel molecules with bespoke properties and structural diversity. The method is available as an 
-open-access tool for medicinal and bioorganic chemistry.    
+**Abstract of the paper**: Generative machine learning models sample molecules from chemical space without the need for explicit design rules. To enable the generative design of innovative molecular entities with limited training data, a deep learning framework for customized compound library generation is presented, aiming to enrich and expand the pharmacologically relevant chemical space with druglike molecular entities ‘on demand’. This de novo design approach combines best practices, and was used to generate molecules that incorporate features of both bioactive synthetic compounds and natural products, which are a primary source of inspiration for drug discovery. The results show that the data-driven machine intelligence acquires implicit chemical knowledge and generates novel molecules with bespoke properties and structural diversity. The method is available as an open-access tool for medicinal and bioorganic chemistry.    
 
-**Keywords**: artificial intelligence; drug design; generative model; natural product; neural network; language model
+**Keywords**: drug design; generative model; language model; chemical virtual libraries; natural product 
 
 ### Requirements<a name="Requirements"></a>
 
 First, you need to clone the repo:
 
 ```
-git clone git@gitlab.ethz.ch:moretm/virtual_libraries.git
+git clone git@github.com:michael1788/virtual_libraries.git
 ```
-Then, you can run the following command which will create a conda virtual environement and install all the needed packages:   
+Then, you can run the following command which will create a conda virtual environement and install all the needed packages (if you don't have conda, you can fist install it by following the instructions here: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html):   
 
 If you are working with a Mac:
 ```
@@ -65,15 +60,16 @@ cd experiments/
 sh run_morty.sh ../data/paper_five_dissimilar_MEGx.txt
 ```
 
-The results of the analysis can be found in experiments/results/paper_five_dissimilar_MEGx/
+The results of the analysis can be found in experiments/results/paper_five_dissimilar_MEGx/  
+Please be aware that you should have one experiment running at the same time for a given transfer learning set.
 
 ### How to run an experiment on your own data<a name="OwnData"></a>
 
-To apply transfer learning on your own set of molecules, you will need a *.txt* file with one SMILES string per line.
+To apply transfer learning on your own set of molecules, you will need a *.txt* file with one SMILES string per line. Your file should be in the folder *virtual_libraries/data/*  
 Then, you can just run the following command:
 
 ```
-sh run_morty.sh {path/to/your/file.txt}
+sh run_morty.sh ../data/{your_file}.txt
 ```
 
 You will find the results of your experiment in experiments/results/{name_of_your_file}/
@@ -124,7 +120,7 @@ sample new molecules, you can do it on your own computer – which was one of ou
 
 *I have never used a terminal, nor do I know what Git really is. What should I do?*   
 If your goal is just to use our project to generate molecules, then we suggest that you use the release we made on 
-Code Ocean (*TODO* when manuscript accepted). There, you have the possibility to run the code without
+Code Ocean (https://doi.org/10.24433/CO.0753661.v1). There, you have the possibility to run the code without
 having to install anything.
 
 *Can I use this code if I work with Windows*?   

@@ -11,6 +11,8 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 import inflect
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 sys.path.append('../src/')
 from python import helper as hp

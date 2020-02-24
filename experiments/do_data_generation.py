@@ -10,6 +10,9 @@ from rdkit import Chem
 from rdkit import rdBase
 rdBase.DisableLog('rdApp.*')
 from rdkit.Chem import Draw
+import warnings
+warnings.filterwarnings("ignore", category=RuntimeWarning)
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 from keras.models import load_model
 
@@ -136,10 +139,23 @@ if __name__ == '__main__':
     model = load_model(model_path)
     
     generated_smi = []
+    counter=0
+    start_sampling = time.time()
     for n in range(n_sample):
         generated_smi.append(sample(model, temp, 
                                     start_char, end_char, max_len+1, 
                                     indices_token, token_indices))
+        
+        # From 100 molecules to sample,
+        # we indicate the current status
+        # to the user
+        if n_sample>=100:
+            if len(generated_smi)%int(0.1*n_sample)==0:
+                counter+=10
+                delta_time = time.time()-start_sampling
+                start_sampling = start_sampling + delta_time
+                print(f'Status for model from epoch {epoch}: {counter}% of the molecules sampled in {delta_time:.2f} seconds')
+        
     hp.save_obj(generated_smi, f'{save_path}{epoch}_{temp}')
     
     end = time.time()

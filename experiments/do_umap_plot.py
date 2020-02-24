@@ -4,6 +4,7 @@ import argparse
 import configparser
 import ast
 import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 from rdkit.Chem import AllChem as Chem
 import math
 import umap
@@ -227,7 +228,7 @@ if __name__ == '__main__':
         all_data = np.concatenate([src_fp, tgt_fp, 
                                    e_start_fp, e_end_fp, 
                                    ft_fp], axis=0)
-        if verbose: print(f'all_data.shape: {all_data.shape}')
+        if verbose: print(f'all_data shape: {all_data.shape}')
         
         embedding = get_embedding(all_data)
         
