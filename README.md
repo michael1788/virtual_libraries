@@ -36,12 +36,12 @@ Then, you can run the following command which will create a conda virtual enviro
 If you are working with a Mac:
 ```
 cd virtual_libraries/
-sh install_mac.sh
+bash install_mac.sh
 ```
 If you are working with a linux system:
 ```
 cd virtual_libraries/
-sh install_linux.sh
+bash install_linux.sh
 ```
 
 Once the installation is done, you can activate the virtual conda environement for this project:
@@ -57,7 +57,7 @@ Now, you can run an example experiment, *e.g.*, the one with five dissimilar mol
 
 ```
 cd experiments/
-sh run_morty.sh ../data/paper_five_dissimilar_MEGx.txt
+bash run_morty.sh ../data/paper_five_dissimilar_MEGx.txt
 ```
 
 The results of the analysis can be found in experiments/results/paper_five_dissimilar_MEGx/  
@@ -69,7 +69,7 @@ To apply transfer learning on your own set of molecules, you will need a *.txt* 
 Then, you can just run the following command:
 
 ```
-sh run_morty.sh ../data/{your_file}.txt
+bash run_morty.sh ../data/{your_file}.txt
 ```
 
 You will find the results of your experiment in experiments/results/{name_of_your_file}/
