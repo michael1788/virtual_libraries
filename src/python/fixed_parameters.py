@@ -19,8 +19,8 @@ INDICES_TOKEN = {"0": 'H', "1": '9', "2": 'D', "3": 'r', "4": 'T', "5": 'R', "6"
 TOKEN_INDICES = {v: k for k, v in INDICES_TOKEN.items()}
 
 
-PAPER_FONT = {'tick_font_sz': 16,
-              'label_font_sz': 19,
+PAPER_FONT = {'tick_font_sz': 15,
+              'label_font_sz': 18,
               'legend_sz': 16,
               'title_sz': 22}
 

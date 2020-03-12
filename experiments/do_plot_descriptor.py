@@ -114,7 +114,7 @@ if __name__ == '__main__':
                                    int(config['AUGMENTATION']['source_space']))
     df = update_df(df, dict_temp)
     
-    for fname in os.listdir(path_des):
+    for fname in sorted(os.listdir(path_des)):
         if fname.endswith('.pkl'):
             if 'desc' in fname and str(temp) in fname:
                 name = fname.replace('.pkl', '')
@@ -144,7 +144,7 @@ if __name__ == '__main__':
     all_models = glob.glob(f'results/{name_data}/models/*.h5')
     epochs_to_plot = [x.split('/')[-1].replace('.h5', '') for x in all_models]
     do_combined_boxplot(df, desc_to_plot, epochs_to_plot, save_path, temp)
-    
+                
     end = time.time()
     if verbose: print(f'DESCRIPTOR PLOT DONE in {end - start:.04} seconds')
     ####################################
