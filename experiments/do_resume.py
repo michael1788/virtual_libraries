@@ -130,33 +130,43 @@ if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read('parameters.ini')
     
-    temp = float(config['EXPERIMENTS']['temp'])
-    desc_to_plot = FP.DESCRIPTORS['names']  
-    desc_to_plot = re.search(r'\((.*?)\)', desc_to_plot).group(1)
+    # We do the UMAP only if the default parameters
+    # were run, i.e. 40 epochs and models saved 
+    # every 10 epochs (period = 10)
+    check_epoch = int(config['MODEL']['epochs'])
+    check_period = int(config['MODEL']['period'])
     
-    if verbose: print('\nSTART RESUME')
-    ####################################
+    if check_epoch==40 and check_period==10:
     
-    
-    
-    
-    ####################################
-    # path to save the drawing
-    save_path = f'results/{name_data}/resume/'
-    os.makedirs(save_path, exist_ok=True)
-    ####################################
-
-    
-    
-    
-    ####################################
-    # Start doing the resume file 
-    # We get back the epoch sampled from the saved models
-    all_models = glob.glob(f'results/{name_data}/models/*.h5')
-    epochs_to_plot = [x.split('/')[-1].replace('.h5','') for x in all_models]
-    draw_at_temp(temp, name_data, epochs_to_plot, save_path, desc_to_plot)
+        temp = float(config['EXPERIMENTS']['temp'])
+        desc_to_plot = FP.DESCRIPTORS['names']  
+        desc_to_plot = re.search(r'\((.*?)\)', desc_to_plot).group(1)
         
-    end = time.time()
-    if verbose: print(f'RESUME DONE in {end - start:.04} seconds')
+        if verbose: print('\nSTART RESUME')
+        ####################################
+        
+        
+        
+        
+        ####################################
+        # path to save the drawing
+        save_path = f'results/{name_data}/resume/'
+        os.makedirs(save_path, exist_ok=True)
+        ####################################
+    
+        
+        
+        
+        ####################################
+        # Start doing the resume file 
+        # We get back the epoch sampled from the saved models
+        all_models = glob.glob(f'results/{name_data}/models/*.h5')
+        epochs_to_plot = [x.split('/')[-1].replace('.h5','') for x in all_models]
+        draw_at_temp(temp, name_data, epochs_to_plot, save_path, desc_to_plot)
+            
+        end = time.time()
+        if verbose: print(f'RESUME DONE in {end - start:.04} seconds')
+    else:
+        print('Defaut paremeters not used; resume not done.')
     ####################################
     

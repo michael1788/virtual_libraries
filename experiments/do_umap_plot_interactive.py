@@ -136,79 +136,90 @@ if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read('parameters.ini')
     
-    min_len = int(config['PROCESSING']['min_len'])
-    max_len = int(config['PROCESSING']['max_len'])
-    mode = config['EXPERIMENTS']['mode']
-    e_end = int(config['MODEL']['epochs'])
-    if e_end<10: e_end=f'0{e_end}'
-    n_dataset = FP.UMAP_PLOT['n_dataset']
-    temp = float(config['EXPERIMENTS']['temp'])
+    # We do the UMAP only if the default parameters
+    # were run, i.e. 40 epochs and models saved 
+    # every 10 epochs (period = 10)
+    check_epoch = int(config['MODEL']['epochs'])
+    check_period = int(config['MODEL']['period'])
     
-    if verbose: print('\nSTART DOING INTERACTIVE UMAP PROJECTION')
-    ####################################
-       
+    if check_epoch==40 and check_period==10:
     
-    
-    
-    ####################################
-    # path to the saved UMAP embedding
-    # and to save the interative UMAP
-    path_umap = f'results/{name_data}/umap/'
-    ####################################
-    
-    
-    
-    
-    ####################################
-    # Do the plot
-    path_projection = f'{path_umap}umap_projection_{temp}.npy'
-    embedding = np.load(path_projection)
-    
-    with open(f'{path_umap}smiles_src.txt', 'r') as f:
-        smiles_src = f.read().splitlines()
-    with open(f'{path_umap}smiles_tgt.txt', 'r') as f:
-        smiles_tgt = f.read().splitlines()
-    with open(f'{path_umap}smiles_start_{temp}.txt', 'r') as f:
-        smiles_start = f.read().splitlines()
-    with open(f'{path_umap}smiles_end_{temp}.txt', 'r') as f:
-        smiles_end = f.read().splitlines()
-    with open(f'{path_umap}smiles_ft.txt', 'r') as f:
-        smiles_ft = f.read().splitlines()
-    
-    lim_src = len(smiles_src)
-    lim_tgt = lim_src + len(smiles_tgt)
-    lim_start = lim_tgt + len(smiles_start)
-    lim_end = lim_start + len(smiles_end)
-    
-    # get separate information
-    df_src = get_dataframe(smiles_src, 
-                           embedding[:lim_src, :], 
-                           'Source space')
-    
-    df_tgt = get_dataframe(smiles_tgt, 
-                           embedding[lim_src:lim_tgt, :], 
-                           'Target space')
-    
-    df_start = get_dataframe(smiles_start, 
-                             embedding[lim_tgt:lim_start, :], 
-                             'First epoch')
-    
-    df_end = get_dataframe(smiles_end, 
-                           embedding[lim_start:lim_end, :], 
-                           'Last epoch')
-    
-    df_ft = get_dataframe(smiles_ft, 
-                          embedding[lim_end:, :], 
-                          'Target set')
-    
-    # concate dataframe
-    frames = [df_src, df_tgt, df_start, df_end, df_ft]
-    frames_concat = pd.concat(frames)
-    
-    # plot
-    do_interactive_chart(frames_concat, f'{path_umap}interative_umap')
-    
-    
-    end = time.time()
-    if verbose: print(f'INTERACTIVE UMAP PROJECTION DONE in {end - start:.04} seconds')                  
-                
+        min_len = int(config['PROCESSING']['min_len'])
+        max_len = int(config['PROCESSING']['max_len'])
+        mode = config['EXPERIMENTS']['mode']
+        e_end = int(config['MODEL']['epochs'])
+        if e_end<10: e_end=f'0{e_end}'
+        n_dataset = FP.UMAP_PLOT['n_dataset']
+        temp = float(config['EXPERIMENTS']['temp'])
+        
+        if verbose: print('\nSTART DOING INTERACTIVE UMAP PROJECTION')
+        ####################################
+           
+        
+        
+        
+        ####################################
+        # path to the saved UMAP embedding
+        # and to save the interative UMAP
+        path_umap = f'results/{name_data}/umap/'
+        ####################################
+        
+        
+        
+        
+        ####################################
+        # Do the plot
+        path_projection = f'{path_umap}umap_projection_{temp}.npy'
+        embedding = np.load(path_projection)
+        
+        with open(f'{path_umap}smiles_src.txt', 'r') as f:
+            smiles_src = f.read().splitlines()
+        with open(f'{path_umap}smiles_tgt.txt', 'r') as f:
+            smiles_tgt = f.read().splitlines()
+        with open(f'{path_umap}smiles_start_{temp}.txt', 'r') as f:
+            smiles_start = f.read().splitlines()
+        with open(f'{path_umap}smiles_end_{temp}.txt', 'r') as f:
+            smiles_end = f.read().splitlines()
+        with open(f'{path_umap}smiles_ft.txt', 'r') as f:
+            smiles_ft = f.read().splitlines()
+        
+        lim_src = len(smiles_src)
+        lim_tgt = lim_src + len(smiles_tgt)
+        lim_start = lim_tgt + len(smiles_start)
+        lim_end = lim_start + len(smiles_end)
+        
+        # get separate information
+        df_src = get_dataframe(smiles_src, 
+                               embedding[:lim_src, :], 
+                               'Source space')
+        
+        df_tgt = get_dataframe(smiles_tgt, 
+                               embedding[lim_src:lim_tgt, :], 
+                               'Target space')
+        
+        df_start = get_dataframe(smiles_start, 
+                                 embedding[lim_tgt:lim_start, :], 
+                                 'First epoch')
+        
+        df_end = get_dataframe(smiles_end, 
+                               embedding[lim_start:lim_end, :], 
+                               'Last epoch')
+        
+        df_ft = get_dataframe(smiles_ft, 
+                              embedding[lim_end:, :], 
+                              'Target set')
+        
+        # concate dataframe
+        frames = [df_src, df_tgt, df_start, df_end, df_ft]
+        frames_concat = pd.concat(frames)
+        
+        # plot
+        do_interactive_chart(frames_concat, f'{path_umap}interative_umap')
+        
+        
+        end = time.time()
+        if verbose: print(f'INTERACTIVE UMAP PROJECTION DONE in {end - start:.04} seconds')
+            
+    else:
+        print('Defaut paremeters not used; interactive UMAP not done.')
+    ####################################       

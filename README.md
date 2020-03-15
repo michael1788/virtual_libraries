@@ -98,8 +98,9 @@ it will open it on http://molview.org where you can see its structure.
 ##### 3. The generated novo molecules by the chemical language model:<a name="Results3"></a>
 You can find the list of molecules (.txt file with one SMILES string per line) in *experiments/results/{name_of_your_file}/novo_molecules/*. 
 Each of those molecules are grammatically valid and not found in the training set. Molecules were sampled every 10 epochs
-(10, 20, 30 and 40) during transfer learning.
+(10, 20, 30 and 40) during transfer learning.   
 
+Note: if you change the number of epochs or the period at which the pretrained chemical language models are saved in *experiments/parameters.ini*, the UMAPs and the resume will not be computed.
 
 ### How is the pipeline working?<a name="Pipeline"></a>
 

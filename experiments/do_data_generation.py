@@ -95,9 +95,7 @@ if __name__ == '__main__':
     model_path = args['model_path']
     name_data = filename.split('/')[-1].replace('.txt','')
     config = configparser.ConfigParser()
-    config.read('parameters.ini')
-    
-    if verbose: print('\nSTART SAMPLING')
+    config.read('parameters.ini')    
     ####################################
     
     

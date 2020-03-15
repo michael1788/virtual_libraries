@@ -137,7 +137,7 @@ if __name__ == '__main__':
             
             hp.save_obj(frechet_dist, f'{save_path}frechet_{epoch}_{temp}')
             if verbose:
-                print(f'e: {epoch}, t: {temp}, FCD to src: {f_dist_src}, FCD to tgt: {f_dist_tgt}')
+                print(f'e: {epoch}, t: {temp}, FCD to src: {f_dist_src:.03}, FCD to tgt: {f_dist_tgt:.03}')
 
     
     end = time.time()

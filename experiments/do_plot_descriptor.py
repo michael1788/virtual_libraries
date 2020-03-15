@@ -142,7 +142,7 @@ if __name__ == '__main__':
     
     # we get back the epoch sampled from the saved models
     all_models = glob.glob(f'results/{name_data}/models/*.h5')
-    epochs_to_plot = [x.split('/')[-1].replace('.h5', '') for x in all_models]
+    epochs_to_plot = sorted([x.split('/')[-1].replace('.h5', '') for x in all_models], key=int)
     do_combined_boxplot(df, desc_to_plot, epochs_to_plot, save_path, temp)
                 
     end = time.time()
