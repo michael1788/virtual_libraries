@@ -18,7 +18,15 @@
 
 ### Description<a name="Description"></a>
 
-Supporting code for the paper «Generative molecular design in low data regimes»
+Supporting code for the paper «Generative molecular design in low data regimes»  
+
+[Access without a paywall via SharedIt](https://www.nature.com/articles/s42256-020-0160-y.epdf?author_access_token=kx71VwOu26XWGELCg3BP-NRgN0jAjWel9jnR3ZoTv0MojvyIaQWNqzF7aemIUbYlNUc8tqoGgWco3JoR6d8H9plcxmpko09VfAUvw6-sCHyp8bABy7FhZ89AUc_da9ZU3s4YWQy4gK0meFq2XLhHYA%3D%3D)  
+
+[Access on the journal webpage](https://doi.org/10.1038/s42256-020-0160-y)   
+
+
+[Preprint version (not up to date with the published version)](https://chemrxiv.org/articles/Generating_Customized_Compound_Libraries_for_Drug_Discovery_with_Machine_Intelligence/10119299)   
+
 
 **Abstract of the paper**: Generative machine learning models sample molecules from chemical space without the need for explicit design rules. To enable the generative design of innovative molecular entities with limited training data, a deep learning framework for customized compound library generation is presented, aiming to enrich and expand the pharmacologically relevant chemical space with druglike molecular entities ‘on demand’. This de novo design approach combines best practices, and was used to generate molecules that incorporate features of both bioactive synthetic compounds and natural products, which are a primary source of inspiration for drug discovery. The results show that the data-driven machine intelligence acquires implicit chemical knowledge and generates novel molecules with bespoke properties and structural diversity. The method is available as an open-access tool for medicinal and bioorganic chemistry.    
 
@@ -29,7 +37,7 @@ Supporting code for the paper «Generative molecular design in low data regimes�
 First, you need to clone the repo:
 
 ```
-git clone git@github.com:michael1788/virtual_libraries.git
+git clone https://github.com/ETHmodlab/virtual_libraries
 ```
 Then, you can run the following command which will create a conda virtual environement and install all the needed packages (if you don't have conda, you can fist install it by following the instructions here: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html):   
 
@@ -129,7 +137,19 @@ We did not test our code with Windows. If you try, please let us know what was t
 everybody can benefit from your experience! 
  
 ### How to cite this work<a name="Cite"></a>
-TODO: update when published.
+```
+@article{Moret2020,
+  title={Generative molecular design in low data regimes},
+  author={Moret, Michael and Friedrich, Lukas and Grisoni, Francesca and Merk, Daniel and Schneider, Gisbert},
+  journal={Nature machine intelligence},
+  volume={2},
+  number={3},
+  pages={171–180},
+  year={2020},
+  doi={10.1038/s42256-020-0160-y},
+  url={https://doi.org/10.1038/s42256-020-0160-y}
+}
+```
 
 ### License<a name="License"></a>
 [MIT License](LICENSE)
