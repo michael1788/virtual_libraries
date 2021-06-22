@@ -1,3 +1,5 @@
+# Copyright (c) 2019 ETH Zurich
+
 import os, sys
 import time
 import argparse

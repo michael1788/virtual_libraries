@@ -1,3 +1,5 @@
+# Copyright (c) 2019 ETH Zurich
+
 import sys, os
 import time
 from rdkit.Chem import AllChem as Chem, Descriptors
